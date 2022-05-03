@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import ApiSWAPI from './componentes/ApiSWAPI/ApiSWAPI';
+import {BrowserRouter, Switch, Route} from "react-router-dom"
+import PersonaSWAPI from './componentes/PersonaSWAPI/PersonaSWAPI';
 
-function App() {
+
+const App =() => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/"  exact render={() => <ApiSWAPI/>}/>
+          <Route path="/:id" render={(routerProps) => <PersonaSWAPI {...routerProps}/>}/>
+        </Switch>
+      </BrowserRouter>
     </div>
+    
   );
 }
 
